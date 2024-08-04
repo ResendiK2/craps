@@ -1,0 +1,63 @@
+# Jogo dos Dados
+
+Este é um jogo de raciocínio lógico implementado em Haskell, onde o usuário joga contra o computador. O objetivo do jogo é remover todos os dados, sendo declarado vencedor aquele que retirar o último dado.
+
+## Requisitos
+
+- [GHC (Glasgow Haskell Compiler)](https://www.haskell.org/ghc/)
+- [Cabal](https://www.haskell.org/cabal/)
+
+## Instalação
+
+1. **Clone o repositório:**
+
+    ```sh
+    git clone <URL_DO_REPOSITORIO>
+    cd <NOME_DO_REPOSITORIO>
+    ```
+
+2. **Configure o projeto:**
+
+    ```sh
+    cabal update
+    cabal build
+    ```
+
+## Execução
+
+Para executar o jogo, siga os passos abaixo:
+
+1. **Inicie o GHCi:**
+
+    ```sh
+    cabal repl
+    ```
+
+2. **Carregue o módulo principal e execute o jogo:**
+
+    ```haskell
+    :load Main
+    main
+    ```
+
+## Como Jogar
+
+1. Ao iniciar o jogo, escolha o nível de dificuldade:
+    - 1 para fácil
+    - 2 para difícil
+
+2. Digite a quantidade de dados para o jogo.
+
+3. O estado inicial dos dados será exibido. 
+
+4. No seu turno, escolha a posição do dado que deseja jogar (posição começando de 1).
+
+5. Se a face do dado for 1, ele será removido. Caso contrário, o dado será rotacionado para uma face menor.
+
+6. O computador fará sua jogada conforme o nível de dificuldade escolhido.
+
+7. O jogo continua alternando entre o jogador e o computador até que todos os dados sejam removidos.
+
+## Estrutura do Código
+
+- `Main.hs`: Contém a lógica principal do jogo, incluindo a inicialização, exibição do estado do jogo, e funções de jogada para o jogador e o computador.

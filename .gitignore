@@ -1,0 +1,35 @@
+# Ignore cabal and stack build files
+dist/
+dist-newstyle/
+cabal.project.local
+cabal.project.local~*
+cabal.project.freeze
+cabal.project.freeze-* 
+.stack-work/
+
+# Ignore editor files
+*.swp
+*.swo
+*~
+
+# Ignore binary executables
+*.exe
+*.hi
+*.o
+*.p_o
+*.p_hi
+*.so
+*.dylib
+*.dll
+
+# Ignore temporary files
+*.log
+*.aux
+*.out
+*.toc
+
+# Ignore backups
+*.bak
+*.backup
+*.orig
+*.tmp
