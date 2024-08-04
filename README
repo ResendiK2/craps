@@ -12,8 +12,8 @@ Este é um jogo de raciocínio lógico implementado em Haskell, onde o usuário 
 1. **Clone o repositório:**
 
     ```sh
-    git clone <URL_DO_REPOSITORIO>
-    cd <NOME_DO_REPOSITORIO>
+    git clone https://github.com/ResendiK2/craps.git
+    cd craps
     ```
 
 2. **Configure o projeto:**
