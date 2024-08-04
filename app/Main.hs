@@ -1,4 +1,5 @@
 import System.Random (randomRIO)
+import Text.Read (readMaybe)
 
 type Dado = Int
 type Jogo = [Dado]
@@ -42,11 +43,21 @@ substituiPorZero [] _ = []
 substituiPorZero (_ : xs) 1 = 0 : xs
 substituiPorZero (dado : xs) n = dado : substituiPorZero xs (n - 1)
 
+-- Função para ler um número inteiro do usuário com validação
+leInteiro :: String -> IO Int
+leInteiro mensagem = do
+  putStrLn mensagem
+  entrada <- getLine
+  case readMaybe entrada of
+    Just n -> return n
+    Nothing -> do
+      putStrLn "Entrada inválida! Tente novamente."
+      leInteiro mensagem
+
 -- Função para o jogador fazer sua jogada
 jogadaJogador :: Jogo -> IO Jogo
 jogadaJogador jogo = do
-  putStrLn "Escolha a posição do dado para jogar (posição iniciando de 1):"
-  pos <- readLn
+  pos <- leInteiro "Escolha a posição do dado para jogar (posição iniciando de 1):"
   if pos < 1 || pos > length jogo
     then do
       putStrLn "Posição inválida! Tente novamente."
@@ -151,13 +162,11 @@ jogoLoop _ _ = putStrLn "Nível de dificuldade inválido. O jogo será encerrado
 main :: IO ()
 main = do
   putStrLn "Bem-vindo ao Jogo dos Dados!"
-  putStrLn "Escolha o nível de dificuldade (1 para fácil, 2 para difícil):"
-  dificuldade <- readLn :: IO Int
+  dificuldade <- leInteiro "Escolha o nível de dificuldade (1 para fácil, 2 para difícil):"
   if dificuldade /= 1 && dificuldade /= 2
     then putStrLn "Nível de dificuldade inválido. O jogo será encerrado."
     else do
-      putStrLn "Digite a quantidade de dados:"
-      n <- readLn :: IO Int
+      n <- leInteiro "Digite a quantidade de dados:"
       jogo <- inicializaJogo n
       exibeJogo jogo
       if dificuldade == 2
